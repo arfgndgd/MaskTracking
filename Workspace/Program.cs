@@ -8,9 +8,25 @@ namespace Workspace
         {
             //Variables();
 
-            Citizen citizen = new Citizen();
-            citizen.Name = "Arif";
+            Person person = new Person();
+            person.Name = "Arif";
 
+            SayHello(name: "Arif");
+            SayHello();
+
+            int result = Addition(3);//parametre verirsek bunu vermezsek metodtaki parametreyi alır
+        }
+
+        static void SayHello(string name="noname") //void metodlar herhangi bir şey döndürmez, bilgi vermez sadece işi yapar.
+        {
+            Console.WriteLine("Hello " + name);
+        }
+
+        static int Addition(int number1=5, int number2=2) //bir sonuç döndürmek istersek void yerine tip yazarız
+        {
+            int sonuc = number1 + number2;
+            Console.WriteLine("Toplam " + sonuc.ToString());
+            return sonuc;
         }
 
         private static void Variables()
@@ -28,7 +44,7 @@ namespace Workspace
             Console.WriteLine(credit * 1.18);
         }
 
-        public class Citizen
+        public class Person
         {
             public string Name { get; set; } //pascal casing
             public string Surname { get; set; }
