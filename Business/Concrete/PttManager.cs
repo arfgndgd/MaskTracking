@@ -36,6 +36,9 @@ namespace Business.Concrete
             if (_applicantService.CheckCitizen(citizen))
             {
                 Console.WriteLine(citizen.FirstName + " için maske verildi");
+            } else
+            {
+                Console.WriteLine(citizen.FirstName + " için maske verilmedi");
             }
         }
     }

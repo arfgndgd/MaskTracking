@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
@@ -68,8 +69,16 @@ namespace Workspace
                 Console.WriteLine(city);
             }
 
-            PttManager pttManager = new PttManager(new ForeignerManager());
-            pttManager.GiveMask(per);
+
+            // Maske Kontrol
+            Citizen citizen = new Citizen();
+            citizen.FirstName = "ARİF";
+            citizen.LastName = "GÜNDOĞDU";
+            citizen.DateOfBirthYear = 1996;
+            citizen.NationalIdentity = 23;
+
+            PttManager pttManager = new PttManager(new CitizenManager());
+            pttManager.GiveMask(citizen);
             
             Console.ReadLine();
         }

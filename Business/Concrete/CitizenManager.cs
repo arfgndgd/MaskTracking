@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using MernisServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,14 @@ namespace Business.Concrete
         public bool CheckCitizen(Citizen citizen)
         {
             //mernis kontrolü yapılacak
-            return true;
+            //Business --> Add --> Connected Services --> Service Reference --> WCF Web Service
+
+            KPSPublicSoapClient client = new KPSPublicSoapClient(KPSPublicSoapClient.EndpointConfiguration.KPSPublicSoap);
+
+            return client.TCKimlikNoDogrulaAsync(
+                new TCKimlikNoDogrulaRequest(
+                new TCKimlikNoDogrulaRequestBody(citizen.NationalIdentity, citizen.FirstName, citizen.LastName, citizen.DateOfBirthYear)))
+                .Result.Body.TCKimlikNoDogrulaResult;
         }
     }
 
