@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class CitizenManager
+    public class CitizenManager : IApplicantService
     {
         //encapsulation --> Özellikleri alıp bir classın içine koyup onları kapsülleme ve sonrasında istediğin şekilde kullanma
         public void ApplyForMask(Citizen citizen) //maske başvurusu
@@ -19,5 +19,11 @@ namespace Business.Concrete
         {
             return null;
         }
+
+        public bool CheckCitizen(Citizen citizen)
+        {
+            return true;
+        }
     }
+
 }
