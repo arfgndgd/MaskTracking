@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class PttManager
+    public class PttManager : ISupplierService
     {
+        private IApplicantService _applicantService;
+
+        public PttManager(IApplicantService applicantService) //Constructor --> Class newlendiğinde çalışır
+        {
+            _applicantService = applicantService;
+        }
+
         public void GiveMask(Citizen citizen)
         {
-            
             //YANLIŞ
             //iş sınıflarında başka bir iş sınıfı kullanılıyorsa uygulama direnç gösterir.
             //CitizenManager sınıfına artık bağımlıyız bu yanlış bir durum.
@@ -19,8 +26,14 @@ namespace Business.Concrete
             //Bunun için Abstract altında interface class  oluşturacağız.
             //MEŞELA HAREKATI
 
-            CitizenManager citizenManager = new CitizenManager();
-            if (citizenManager.CheckCitizen(citizen))
+            //YANLIŞ
+            //CitizenManager citizenManager = new CitizenManager();
+            //if (citizenManager.CheckCitizen(citizen))
+            //{
+            //    Console.WriteLine(citizen.FirstName + " için maske verildi");
+            //}
+
+            if (_applicantService.CheckCitizen(citizen))
             {
                 Console.WriteLine(citizen.FirstName + " için maske verildi");
             }

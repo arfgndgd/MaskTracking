@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Concrete;
+using System;
 using System.Collections.Generic;
 
 namespace Workspace
@@ -66,7 +67,9 @@ namespace Workspace
             {
                 Console.WriteLine(city);
             }
-             
+
+            PttManager pttManager = new PttManager(new ForeignerManager());
+            pttManager.GiveMask(per);
             
             Console.ReadLine();
         }
